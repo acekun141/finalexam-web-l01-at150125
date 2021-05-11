@@ -10,7 +10,11 @@
   './base/color',
   './base/typography';
 
-// @import './components'
+@import
+  './components/button',
+  './components/input',
+  './components/form',
+  './components/checkbox';
 
 @import
   './layout/base',
