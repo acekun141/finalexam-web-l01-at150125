@@ -1,0 +1,23 @@
+@import
+  './abstracts/mixins',
+  './abstracts/placeholders',
+  './abstracts/variables',
+  './abstracts/animations';
+
+@import
+  './base/reset',
+  './base/spacing',
+  './base/color',
+  './base/typography';
+
+// @import './components'
+
+@import
+  './layout/base',
+  './layout/footer',
+  './layout/header',
+  './layout/sidebar';
+
+// @import
+//   './pages/home',
+//   './pages/candidate';
