@@ -1,0 +1,13 @@
+.login-form {
+  padding: 30px;
+  background-color: white;
+  margin: 50px auto;
+  max-width: 400px;
+  border-radius: 16px;
+  .custom-input {
+    max-width: 100%;
+  }
+  button {
+    width: 100%;
+  }
+}

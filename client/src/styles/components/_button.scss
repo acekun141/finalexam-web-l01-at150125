@@ -1,0 +1,41 @@
+.btn {
+  line-height: var(--font-base);
+  cursor: pointer;
+  padding: 16px 32px;
+  outline: 0;
+  border: 0;
+  display: flex;
+  border-radius: 8px;
+  font-weight: 500;
+  background: var(--color-primary);
+  color: var(--color-white);
+  text-align: center;
+  display: block;
+  position: relative;
+  line-height: 20px;
+  &:active {
+    transform: scale(0.99);
+  }
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.8;
+  }
+  &.sm {
+    padding: 8px 32px;
+  }
+  &.lg {
+    padding: 16px 32px;
+  }
+  .icon-wrapper {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 8px;
+  }
+  svg {
+    height: 18px;
+    display: block;
+    stroke-width: 2;
+    animation: rotation 0.9s linear infinite;
+  }
+}

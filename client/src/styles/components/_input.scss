@@ -1,0 +1,49 @@
+.custom-input {
+  max-width: 320px;
+  position: relative;
+  margin: 15px 0;
+  input {
+    width: 100%;
+    outline: 0;
+    border: 0;
+    font-size: var(--font-base);
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--color-gray);
+    &:focus {
+      border: 1px solid var(--color-primary);
+    }
+    &.active, &:focus {
+      & + label {
+        font-weight: 600;
+        top: -11px;
+        font-size: var(--font-sm);
+        left: 12px;
+      }
+    }
+    &.active + label {
+      color: var(--color-gray);
+    }
+    &:focus + label {
+      color: var(--color-primary);
+    }
+  }
+  label {
+    background-color: var(--color-white);
+    padding: 0 5px;
+    left: 11px;
+    top: 8px;
+    font-size: var(--font-base);
+    position: absolute;
+    transition: 0.1s ease-out;
+    color: var(--color-gray);
+  }
+}
+
+.input {
+  background-color: var(--color-gray-0);
+  border: 0;
+  outline: 0;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
