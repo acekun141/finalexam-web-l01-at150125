@@ -1,0 +1,26 @@
+.calendar {
+  max-width: 450px;
+  &__filter {
+    display: flex;
+    align-items: flex-end;
+    button {
+      margin-left: auto;
+    }
+  }
+  &__content {
+    height: 300px;
+    &.empty {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      svg {
+        width: 60px;
+        fill: var(--color-gray-2);
+      }
+      p {
+        color: var(--color-gray-2);
+      }
+    }
+  }
+}

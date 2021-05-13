@@ -14,7 +14,10 @@
   './components/button',
   './components/input',
   './components/form',
-  './components/checkbox';
+  './components/checkbox',
+  './components/page',
+  './components/select',
+  './components/lesson';
 
 @import
   './layout/base',
@@ -22,6 +25,5 @@
   './layout/header',
   './layout/sidebar';
 
-// @import
-//   './pages/home',
-//   './pages/candidate';
+@import
+  './pages/schedule';
