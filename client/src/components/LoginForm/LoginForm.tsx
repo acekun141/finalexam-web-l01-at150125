@@ -15,13 +15,12 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="form login-form shadow-0">
+    <form onSubmit={handleSubmit} className="form login-form">
       <p className="form__title">Login</p>
-      <Input label="Username" />
-      <Input label="Password" type={showPassword ? "text" : "password"} />
-      <Checkbox onChange={handleShowPassword} label="Show password" />
-      <br />
-      <Button>Login</Button>
+      <Input label="Tài khoản" />
+      <Input label="Mật khẩu" type={showPassword ? "text" : "password"} />
+      <Checkbox onChange={handleShowPassword} label="Hiển thị mật khẩu" />
+      <Button type="submit" id="login-button">Đăng nhập</Button>
     </form>
   )
 }

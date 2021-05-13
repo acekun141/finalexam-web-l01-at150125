@@ -6,3 +6,21 @@
     transform: rotate(360deg);
   }
 }
+
+@keyframes rowName {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 200px;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

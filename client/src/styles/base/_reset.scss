@@ -1,0 +1,13 @@
+* {
+  -webkit-appearance:none;
+}
+
+button {
+  cursor: pointer;
+}
+
+.card {
+  background-color: var(--color-white);
+  border-radius: 16px;
+  padding: 30px;
+}
