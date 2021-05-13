@@ -13,12 +13,18 @@
   display: block;
   position: relative;
   line-height: 20px;
+  white-space: nowrap;
   &:active {
     transform: scale(0.99);
   }
   &:disabled {
     pointer-events: none;
     opacity: 0.8;
+  }
+  &.outline {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
   }
   &.sm {
     padding: 8px 32px;

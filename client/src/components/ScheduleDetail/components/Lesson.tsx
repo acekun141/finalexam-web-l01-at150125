@@ -6,7 +6,7 @@ const Lesson = () => {
     <div className="lesson">
       <div className="lesson__detail">
         <div className="lesson__name">
-          <p>Buổi 1: Cách sử dụng máy tính để chia động từ</p>
+          <p>Buổi 1: Anim consequat ipsum aliqua laboris ea dolor ad enim ea dolore aliqua.</p>
         </div>
         <div className="lesson__class">
           <BiBook size="16px" />

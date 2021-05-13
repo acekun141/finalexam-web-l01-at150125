@@ -2,6 +2,7 @@ import React from "react";
 import BaseLayout from "../components/BaseLayout";
 
 const AdminDashboard = () => {
+  console.log('render');
   return (
     <BaseLayout>
       <div className="page">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import { Button, Select } from "../../container/components";
 import { MONTH } from "../../container/constants";
 import { generateArrayOfYears } from "../../utils/years";
@@ -11,14 +11,25 @@ const yearOption = generateArrayOfYears(20).map(item => ({
 }));
 
 const Calendar = () => {
+  const [month, setMonth] = useState(new Date().getMonth() + 1);
+  const [year, setYear] = useState(new Date().getFullYear());
+
+  const handleMonthChange = useCallback((value) => {
+    setMonth(value);
+  }, [])
+
+  const handleYearChange = useCallback((value) => {
+    setYear(value);
+  }, []);
+
   return (
     <div className="card calendar">
       <div className="calendar__filter">
-        <Select getValue={() => {}} label="Tháng" option={MONTH} />
-        <Select getValue={() => {}} label="Năm" option={yearOption} />
+        <Select value={month} onChange={handleMonthChange} label="Tháng" option={MONTH} />
+        <Select value={year} onChange={handleYearChange} label="Năm" option={yearOption} />
         <Button size="sm">Tìm kiếm</Button>
       </div>
-      <CalendarContent />
+      <CalendarContent month={month} year={year} />
     </div>
   );
 }

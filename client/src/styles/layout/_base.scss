@@ -12,9 +12,11 @@ body, html {
 .base-layout {
   display: flex;
   &__content {
+    position: relative;
     flex: 1;
-    padding: 30px;
-    overflow: auto;
+    padding: 30px 120px;
+    overflow-y: auto;
+    overflow-x: hidden;
     height: 100vh;
   }
 }

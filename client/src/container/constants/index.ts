@@ -11,4 +11,11 @@ export const MONTH = [
   { text: "Tháng 10", value: 10 },
   { text: "Tháng 11", value: 11 },
   { text: "Tháng 12", value: 12 },
-]
+];
+
+export const ROLE = [
+  { text: "Quản trị viên", value: "admin" },
+  { text: "Giáo viên", value: "teacher" },
+  { text: "Phụ huynh", value: "parents" },
+  { text: "Học sinh", value: "student" },
+];
