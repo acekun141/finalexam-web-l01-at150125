@@ -14,6 +14,10 @@
   position: relative;
   line-height: 20px;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
   &:active {
     transform: scale(0.99);
   }
@@ -37,11 +41,19 @@
     top: 50%;
     transform: translateY(-50%);
     right: 8px;
+    svg {
+      height: 18px;
+      display: block;
+      stroke-width: 2;
+      animation: rotation 0.9s linear infinite;
+    }
   }
-  svg {
+  .icon {
+    left: 8px;
     height: 18px;
-    display: block;
-    stroke-width: 2;
-    animation: rotation 0.9s linear infinite;
+    margin-right: 10px;
+    svg {
+      fill: var(--color-white);
+    }
   }
 }

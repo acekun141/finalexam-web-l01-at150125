@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import SidebarRow from "./components/SidebarRow";
 import {
@@ -35,10 +35,10 @@ const Sidebar = () => {
         </div>
       </button>
       <SidebarRow
-        isActive={location.pathname.startsWith("/dashboard")}
+        isActive={location.pathname === "/"}
         icon={BiGridAlt}
         name="Trang chủ"
-        action={() => rowAction("/dashboard")}
+        action={() => rowAction("/")}
       />
       <SidebarRow
         isActive={location.pathname.startsWith("/schedule")}
@@ -71,10 +71,10 @@ const Sidebar = () => {
         action={() => rowAction("/students")}
       />
       <SidebarRow
-        isActive={location.pathname.startsWith("/class")}
+        isActive={location.pathname.startsWith("/classes")}
         icon={BiBook}
         name="Lớp"
-        action={() => rowAction("/class")}
+        action={() => rowAction("/classes")}
       />
       <SidebarRow
         isActive={location.pathname.startsWith("/payment")}

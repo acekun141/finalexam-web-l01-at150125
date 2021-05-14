@@ -7,6 +7,7 @@ export interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
   size?: "sm" | "lg";
   color?: "danger" | "success" | "warning";
   outline?: boolean;
+  icon?: React.ElementType;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -15,6 +16,7 @@ export const Button: React.FC<ButtonProps> = ({
   className = "",
   color = "",
   size = "",
+  icon: Icon,
   outline = false,
   disabled = false,
   ...rest
@@ -27,6 +29,11 @@ export const Button: React.FC<ButtonProps> = ({
         outline ? "outline" : ""
       } btn`}
     >
+      {Icon && (
+        <div className="icon">
+          <Icon size="18px" />
+        </div>
+      )}
       {children}
       {loading && (
         <div className="icon-wrapper">
