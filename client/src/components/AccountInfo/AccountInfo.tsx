@@ -1,7 +1,8 @@
 import React from "react";
-import { BiPaperPlane, BiPhone, BiUser } from "react-icons/bi";
+import { BiPhone, BiUser } from "react-icons/bi";
 import { Button } from "../../container/components";
 import "./account-info.scss";
+
 
 const AccountInfo = () => {
   return (
@@ -13,14 +14,14 @@ const AccountInfo = () => {
         <div className="account-info__name">Nguyen Thanh Tung</div>
         <div className="account-info__role">
           <BiUser size="18px" />
-          <p>Giao vien</p>
+          <p>Giáo viên</p>
         </div>
         <div className="account-info__phone">
           <BiPhone size="18px" />
           <p>0923456789</p>
         </div>
         <div className="account-info__contact-detail">
-          <Button size="sm">Nhan tin</Button>
+          <Button size="sm">Nhắn tin</Button>
         </div>
       </div>
     </div>

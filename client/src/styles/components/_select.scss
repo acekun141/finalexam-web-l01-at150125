@@ -6,13 +6,11 @@
     outline: 0;
     border: 0;
     border-radius: 8px;
-    background-color: var(--color-blue-0);
-    color: var(--color-primary);
-    font-weight: bold;
+    background-color: var(--color-gray-0);
+    color: var(--color-text);
   }
   label {
     font-size: var(--font-sm);
-    font-weight: bold;
     color: var(--color-gray-2);
     margin-bottom: 5px;
   }

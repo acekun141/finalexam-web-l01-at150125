@@ -53,22 +53,22 @@ const Sidebar = () => {
         action={() => rowAction("/message")}
       />
       <SidebarRow
-        isActive={location.pathname.startsWith("/accounts")}
+        isActive={location.pathname.startsWith("/account-list")}
         icon={BiUser}
         name="Tài khoản"
-        action={() => rowAction("/accounts")}
+        action={() => rowAction("/account-list")}
       />
       <SidebarRow
-        isActive={location.pathname.startsWith("/teachers")}
+        isActive={location.pathname.startsWith("/teacher-list")}
         icon={BiUserCircle}
         name="Giáo viên"
-        action={() => rowAction("/teachers")}
+        action={() => rowAction("/teacher-list")}
       />
       <SidebarRow
-        isActive={location.pathname.startsWith("/students")}
+        isActive={location.pathname.startsWith("/student-list")}
         icon={BiFace}
         name="Học sinh"
-        action={() => rowAction("/students")}
+        action={() => rowAction("/student-list")}
       />
       <SidebarRow
         isActive={location.pathname.startsWith("/classes")}

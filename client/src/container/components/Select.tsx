@@ -6,13 +6,16 @@ interface IProps extends React.ComponentPropsWithoutRef<"input"> {
   label: string;
   value?: any;
   onChange: (value: any) => any;
+  hidden?: boolean;
 }
 
-export const Select: React.FC<IProps> = ({ label, option, value, onChange, ...rest }) => {
+export const Select: React.FC<IProps> = ({ label, option, value, hidden, onChange, ...rest }) => {
 
   const handleSelectChange = (event: FormEvent<HTMLSelectElement>) => {
     onChange(event.currentTarget.value);
   };
+
+  if (hidden) return null;
 
   return (
     <div className="custom-select">

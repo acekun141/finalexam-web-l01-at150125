@@ -5,7 +5,11 @@ import UserCard from "../UserCard";
 import ModalConfirm from "../ModalConfirm";
 import "./list-account.scss";
 
-const ListAccount = () => {
+interface IProps {
+  type?: "teacher" | "student";
+}
+
+const ListAccount: React.FC<IProps> = ({ type }) => {
   const [showConfirmDelete, setShowConfirmDelete] = useState({ userId: "", name: "" });
 
   const handleDelete = (userId: string, name: string) => {
@@ -15,6 +19,8 @@ const ListAccount = () => {
   const closeConfirmDelete = () => {
     setShowConfirmDelete({ userId: "", name: "" });
   }
+
+  console.log(type);
 
   return (
     <div className="list-account">
@@ -27,6 +33,7 @@ const ListAccount = () => {
       <div className="list-account__filter">
         <input placeholder="Tìm kiếm" className="input" />
         <Select
+          hidden={!!type}
           onChange={(value) => console.log(value)}
           label="Chức vụ"
           option={ROLE}

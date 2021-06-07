@@ -1,0 +1,38 @@
+.tab-container {
+  .tab-header {
+    button {
+      background: transparent;
+      outline: 0;
+      border: 0;
+      padding: 16px 32px;
+      font-size: var(--font-base);
+      color: var(--color-gray-2);
+      font-weight: bold;
+      border-radius: 8px;
+      transition: 0.1s ease-in-out;
+      &:hover {
+        background-color: var(--color-blue-0);
+      }
+      &.active {
+        &:hover {
+          background-color: unset;
+        }
+        position: relative;
+        color: var(--color-primary);
+        &:after {
+          left: 0;
+          top: 100%;
+          content: '';
+          position: absolute;
+          border-radius: 0;
+          height: 5px;
+          width: 100%;
+          background-color: var(--color-primary);
+        }
+      }
+    }
+  }
+  .tab-content {
+    margin-top: 16px;
+  }
+}
