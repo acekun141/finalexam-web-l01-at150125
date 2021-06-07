@@ -20,7 +20,9 @@
   './components/lesson',
   './components/user-card',
   './components/modal',
-  './components/class';
+  './components/class',
+  './components/card-info',
+  './components/direct';
 
 @import
   './layout/base',
@@ -30,4 +32,6 @@
 
 @import
   './pages/schedule',
-  './pages/account-detail';
+  './pages/account-detail',
+  './pages/dashboard',
+  './pages/message';
