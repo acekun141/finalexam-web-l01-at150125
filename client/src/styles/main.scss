@@ -22,7 +22,9 @@
   './components/modal',
   './components/class',
   './components/card-info',
-  './components/direct';
+  './components/direct',
+  './components/payment-detail',
+  './components/credit-card-info';
 
 @import
   './layout/base',
@@ -34,4 +36,5 @@
   './pages/schedule',
   './pages/account-detail',
   './pages/dashboard',
-  './pages/message';
+  './pages/message',
+  './pages/payment-page';

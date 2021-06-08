@@ -1,0 +1,13 @@
+.payment-page {
+  .payment-info {
+    display: flex;
+    align-items: flex-start;
+    .credit-card-info {
+      width: 450px;
+      margin-left: 16px;
+    }
+    .payment-detail {
+      flex: 1;
+    }
+  }
+}

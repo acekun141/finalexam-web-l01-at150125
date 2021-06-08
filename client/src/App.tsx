@@ -9,6 +9,7 @@ import AccountDetail from "./pages/AccountDetailt";
 import TeacherListPage from "./pages/TeacherListPage";
 import StudentListPage from "./pages/StudentListPage";
 import MessagePage from "./pages/MessagePage";
+import PaymentPage from "./pages/PaymentPage";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <PublicRoute isAuthenticated={true} restricted={false} exact component={ListClassPage} path="/classes" />
           <PublicRoute isAuthenticated={true} restricted={false} exact component={MessagePage} path="/message" />
           <PublicRoute isAuthenticated={true} restricted={false} exact component={AccountDetail} path="/account/:id" />
+          <PublicRoute isAuthenticated={true} restricted={false} exact component={PaymentPage} path="/payment" />
         </Switch>
       </Router>
     </div>
