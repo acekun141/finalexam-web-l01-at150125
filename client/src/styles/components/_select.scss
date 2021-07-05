@@ -1,6 +1,25 @@
 .custom-select {
   display: flex;
   flex-direction: column-reverse;
+  position: relative;
+  &.outline {
+    margin: 15px 0;
+    select {
+      padding: 14px 16px;
+      background-color: transparent;
+      border: 1px solid var(--color-gray);
+    }
+    label {
+      padding: 0 5px;
+      background-color: white;
+      position: absolute;
+      font-weight: 600;
+      top: -11px;
+      font-size: var(--font-sm);
+      left: 12px;
+      color: var(--color-gray);
+    }
+  }
   select {
     padding: 8px 16px;
     outline: 0;

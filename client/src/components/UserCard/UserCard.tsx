@@ -3,7 +3,7 @@ import { BiBlock, BiEdit, BiTrash } from "react-icons/bi";
 import { useHistory } from "react-router";
 import DivAutoFit from "../../container/components/DivAutoFit";
 
-const url = "https://scontent-hkg4-1.xx.fbcdn.net/v/t1.6435-9/174420944_1459448700892553_2602018160453476742_n.jpg?_nc_cat=105&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=SKxgHPk6VAEAX90aTuJ&_nc_ht=scontent-hkg4-1.xx&oh=3f854f300bafd5aa54c6cbf65206916a&oe=60C052AF";
+const url = "https://i.pinimg.com/originals/5d/16/97/5d1697f5aa5c3adcd8b0ba94d8f8d030.jpg";
 
 interface IProps {
   isAdmin?: boolean;

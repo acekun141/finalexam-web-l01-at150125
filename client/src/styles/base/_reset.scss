@@ -16,3 +16,20 @@ button {
   cursor: pointer;
   user-select: none;
 }
+
+.form-row {
+  display: flex;
+  .col {
+    margin-right: 15px;  
+    &:last-child {
+      margin-right: auto;
+    }
+  }
+  & + .custom-input {
+    margin-top: 0;
+  }
+}
+
+.d-flex {
+  display: flex;
+}

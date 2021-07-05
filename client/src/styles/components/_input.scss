@@ -2,6 +2,18 @@
   max-width: 320px;
   position: relative;
   margin: 15px 0;
+  &.block {
+    max-width: unset;
+    width: 100%;
+  }
+  &.lg {
+    input {
+      padding: 14px 16px;
+    }
+    label {
+      top: 14px;
+    }
+  }
   input {
     width: 100%;
     outline: 0;
