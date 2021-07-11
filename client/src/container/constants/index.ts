@@ -26,3 +26,10 @@ export const CLASS = [
   { text: "Khoi 3", value: 3 },
   { text: "Khoi 4", value: 4 }
 ];
+
+export const convertRole = {
+  "student": "Học sinh",
+  "admin": "Quản trị viên",
+  "teacher": "Giáo viên",
+  "parent": "Phụ huynh"
+}

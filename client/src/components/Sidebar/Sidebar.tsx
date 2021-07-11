@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useHistory, useLocation } from "react-router-dom";
-import SidebarRow from "./components/SidebarRow";
 import {
   BiGridAlt,
   BiUser,
@@ -13,14 +12,25 @@ import {
   BiMessageSquareDetail,
   BiCalendarStar,
 } from "react-icons/bi";
+import { useSelector } from "react-redux";
+
+import { convertRole } from "../../container/constants";
+import SidebarRow from "./components/SidebarRow";
+import { IUserInfo } from "../../utils/user/userInterface";
 
 const Sidebar = () => {
   const history = useHistory();
   const location = useLocation();
+  const user: IUserInfo = useSelector((state: any) => state.user);
 
   const rowAction = (url: string) => {
     history.push(url);
   };
+
+  const handleLogout = useCallback(() => {
+    localStorage.clear();
+    window.location.reload();
+  }, []);
 
   return (
     <div className="sidebar">
@@ -30,8 +40,8 @@ const Sidebar = () => {
           src="https://i.pinimg.com/originals/5d/16/97/5d1697f5aa5c3adcd8b0ba94d8f8d030.jpg"
         />
         <div className="detail">
-          <p className="name">Lê Viết Hưng</p>
-          <p className="role">Quản trị viên</p>
+          <p className="name">{`${user.first_name} ${user.last_name}`}</p>
+          <p className="role">{convertRole[user.role]}</p>
         </div>
       </button>
       <SidebarRow
@@ -92,7 +102,7 @@ const Sidebar = () => {
         <SidebarRow
           icon={BiLogInCircle}
           name="Đăng xuất"
-          action={() => rowAction("/logout")}
+          action={handleLogout}
         />
       </div>
     </div>

@@ -1,15 +1,18 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { BiUser } from "react-icons/bi"
+
 import BaseLayout from "../components/BaseLayout";
 import { CardInfo } from "../container/components";
-import { BiUser } from "react-icons/bi"
 import Modal from "../container/components/Modal";
 import UserInfoForm from "../container/forms/UserInfo";
 
 const AdminDashboard = () => {
+  const user = useSelector((state: any) => state.user);
   return (
     <BaseLayout>
       <div className="page">
-        <Modal isOpen={true} title="User Info" closeModal={() => {}}>
+        <Modal isOpen={!user.first_name} title="User Info" closeModal={() => {}}>
           <UserInfoForm />
         </Modal>
         <p className="page__title">Trang chủ</p>

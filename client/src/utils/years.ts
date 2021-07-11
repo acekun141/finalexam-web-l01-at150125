@@ -1,4 +1,4 @@
-export const generateArrayOfYears = (numberOfYears) => {
+export const generateArrayOfYears = (numberOfYears: any) => {
   const max = new Date().getFullYear();
   const min = max - numberOfYears;
   const years = [];
