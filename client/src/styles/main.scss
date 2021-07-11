@@ -19,7 +19,12 @@
   './components/select',
   './components/lesson',
   './components/user-card',
-  './components/modal';
+  './components/modal',
+  './components/class',
+  './components/card-info',
+  './components/direct',
+  './components/payment-detail',
+  './components/credit-card-info';
 
 @import
   './layout/base',
@@ -28,4 +33,8 @@
   './layout/sidebar';
 
 @import
-  './pages/schedule';
+  './pages/schedule',
+  './pages/account-detail',
+  './pages/dashboard',
+  './pages/message',
+  './pages/payment-page';

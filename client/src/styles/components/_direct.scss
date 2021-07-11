@@ -1,0 +1,146 @@
+.direct {
+  height: 100%;
+  display: flex;
+  &__chat-box-wrapper {
+    margin-left: 8px;
+    height: 100%;
+    flex: 1;
+  }
+}
+
+.conversation-list {
+  padding: 16px;
+  width: 350px;
+  height: 100%;
+  background-color: var(--color-white);
+  border-radius: 16px;
+  &__header {
+    padding-bottom: 16px;
+    p {
+      font-size: var(--font-lg);
+      font-weight: bold;
+      text-align: center;
+      color: var(--color-gray-2);
+    }
+  }
+}
+
+.conversation {
+  display: flex;
+  margin-bottom: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  &__avatar-wrapper {
+    height: 50px;
+    width: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-yellow-0);
+    img {
+      height: 100%;
+      width: auto;
+    }
+    .sort-name {
+      font-weight: bold;
+      color: var(--color-secondary);
+    }
+  }
+  &__detail {
+    margin-left: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  &__full-name {
+    font-weight: bold;
+  }
+  &__latest-message {
+    color: var(--color-gray-2);
+  }
+  &:hover {
+    background-color: var(--color-blue-0);
+  }
+}
+
+.chat-box {
+  background-color: white;
+  border-radius: 16px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  &__header {
+    padding: 8px 16px;
+    border-bottom: 2px solid var(--color-background);
+    .conversation {
+      margin: 0;
+      &:hover {
+        background-color: unset;
+      }
+      &__avatar-wrapper {
+        height: 35px;
+        width: 35px;
+      }
+    }
+  }
+  &__content {
+    flex: 1;
+  }
+  &__input {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    input {
+      width: 100%;
+      height: 40px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 0;
+      outline: 0;
+      background-color: var(--color-background);
+    }
+    button {
+      display: flex;
+      margin-left: 8px;
+      border: 0;
+      outline: 0;
+      background-color: transparent;
+      align-items: center;
+      justify-self: center;
+      svg {
+        fill: var(--color-primary);
+      }
+    }
+  }
+}
+
+.conversation-detail { 
+  padding: 16px;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 8px;
+  &.own {
+    flex-direction: row-reverse;
+    .message__content {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+  }
+  &__content {
+    border-radius: 8px;
+    background-color: var(--color-gray-0);
+    padding: 8px;
+  }
+  &__time {
+    margin: 0 8px;
+    font-size: var(--font-sm);
+    color: var(--color-gray-2);
+  }
+}

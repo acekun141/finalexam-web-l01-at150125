@@ -4,3 +4,4 @@ export { PrivateRoute } from "./PrivateRoute";
 export { PublicRoute } from "./PublicRoute";
 export { Checkbox } from "./Checkbox";
 export { Select } from "./Select";
+export { CardInfo } from "./CardInfo";

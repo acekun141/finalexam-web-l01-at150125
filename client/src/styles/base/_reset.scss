@@ -11,3 +11,30 @@ button {
   border-radius: 16px;
   padding: 30px;
 }
+
+.pointer {
+  cursor: pointer;
+  user-select: none;
+}
+
+.form-row {
+  display: flex;
+  .col {
+    margin-right: 15px;  
+    &:last-child {
+      margin-right: auto;
+    }
+  }
+  & + .custom-input {
+    margin-top: 0;
+  }
+}
+
+.d-flex {
+  display: flex;
+}
+
+.error-message {
+  font-size: 0.8rem;
+  color: var(--color-danger);
+}

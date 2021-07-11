@@ -1,0 +1,34 @@
+.card-info {
+  background-color: var(--color-white);
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  align-items: stretch;
+  &__icon-wrapper {
+    background-color: var(--color-blue-0);
+    height: 60px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    svg {
+      fill: var(--color-primary);
+    }
+  }
+  &__detail {
+    margin-left: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+  }
+  &__number {
+    font-size: var(--font-lg);
+    font-weight: bold;
+  }
+  &__name {
+    color: var(--color-gray-1);
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,45 @@
+.account-info {
+  display: flex;
+  &__avatar {
+    width: 152px;
+    height: 152px;
+    overflow: hidden;
+    border-radius: 50%;
+    img {
+      height: 100%;
+      width: auto;
+    }
+  }
+  &__contact {
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+  &__name {
+    font-size: var(--font-xs);
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+  // &__role {
+  //   display: inline-block;
+  //   border-radius: 8px;
+  //   margin-bottom: 5px;
+  // }
+  &__phone, &__role {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    p {
+      margin-left: 5px;
+    }
+  }
+  &__contact-detail {
+    margin-top: auto;
+    display: flex;
+    .btn {
+      &:first-child {
+        margin-right: 15px;
+      }
+    }
+  }
+}

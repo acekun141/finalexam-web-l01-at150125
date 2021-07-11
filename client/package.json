@@ -17,8 +17,11 @@
     "@types/redux": "^3.6.0",
     "@types/redux-thunk": "^2.1.0",
     "axios": "^0.21.1",
+    "http-proxy-middleware": "^2.0.1",
+    "moment": "^2.29.1",
     "node-sass": "^6.0.0",
     "react": "^17.0.2",
+    "react-data-table-component": "^6.11.7",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
     "react-router-dom": "^5.2.0",
@@ -51,5 +54,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.9"
   }
 }

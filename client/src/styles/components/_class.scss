@@ -1,0 +1,50 @@
+.class {
+  background-color: var(--color-white);
+  padding: 30px;
+  border-radius: 16px;
+  &__teacher {
+    display: flex;
+  }
+  &__avatar {
+    width: 64px;
+    height: 64px;
+    overflow: hidden;
+    border-radius: 50%;
+    img {
+      height: 100%;
+      width: auto;
+    }
+  }
+  &__teacher-detail {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 10px;
+    margin-left: 15px;
+  }
+  &__teacher-name {
+    font-weight: 700;
+    color: var(--color-gray);
+    margin-bottom: 5px;
+  }
+  &__teacher-role {
+    font-size: var(--font-sm);
+    color: var(--color-white);
+    background-color: var(--color-secondary);
+    padding: 5px;
+    border-radius: 8px;
+    font-weight: 700;
+  }
+  &__name {
+    font-size: var(--font-lg);
+    font-weight: 700;
+  }
+  &__detail {
+    margin-bottom: 15px;
+    font-size: var(--font-sm);
+    p {
+      margin-top: auto;
+      color: var(--color-gray);
+    }
+  }
+}

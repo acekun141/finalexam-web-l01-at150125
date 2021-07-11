@@ -1,0 +1,43 @@
+.payment-detail {
+  background-color: var(--color-white);
+  padding: 16px;
+  border-radius: 16px;
+  &__status {
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: var(--color-success-light);
+    display: inline-block;
+    p {
+      color: var(--color-success-dark);
+      font-weight: bold;
+    }
+  }
+  &__amount {
+    margin-top: 8px;
+    font-weight: bold;
+    font-size: var(--font-xs);
+  }
+  &__month {
+    color: var(--color-gray-2);
+  }
+  &__button-wrapper {
+    margin-top: 16px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  &__user {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    img {
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+    }
+    p {
+      margin-left: 8px;
+      color: var(--color-gray-2);
+      font-weight: bold;
+    }
+  }
+}
