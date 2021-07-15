@@ -8,7 +8,7 @@ const userInfoSchema = new mongoose.Schema({
 	date_of_birth: { type: Date, required: true },
 	avatar: { type: String, required: false, default: "" },
 	user_id: { type: String, ref: 'User.id' },
-	sex: { type: String, enum: ["male", "female"]}
+	sex: { type: Number, enum: [1, 0]}
 });
 
 export default mongoose.model<IUserInfo & mongoose.Document>('UserInfo', userInfoSchema);

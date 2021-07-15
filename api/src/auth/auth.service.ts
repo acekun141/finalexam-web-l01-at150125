@@ -2,25 +2,35 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { UserWithUsernameAlreadyExisted, WrongCredential } from "../_exception";
 import { User } from "../user/user.interface";
+import { IUserInfo } from "../userInfo/userInfo.interface";
+import UserInfo from "../userInfo/userInfo.model";
 import UserModel from "../user/user.model";
 import TokenModel from "../token/token.model";
-import { TokenPayload, TokenResult } from "../_interface";
+import { Role, TokenPayload, TokenResult } from "../_interface";
 import TokenService from "../token/token.service";
 import { v4 } from "uuid";
 
 export default class AuthService {
-	public user = UserModel;
-	public token = TokenModel;
+	private user = UserModel;
+	private token = TokenModel;
+	private userInfo = UserInfo;
 	private tokenService = new TokenService();
 
-	public async createUser(payload: Omit<User, 'id' | 'role'>) {
-		const userWithUsername = await this.user.findOne({ username: payload.username });
+	public async createUser(payload: Omit<User & IUserInfo, 'id' >, role: Role, username: string) {
+		const userWithUsername = await this.user.findOne({ username });
 		if (userWithUsername) {
-			throw new UserWithUsernameAlreadyExisted(payload.username);
+			throw new UserWithUsernameAlreadyExisted(username);
 		}
 		const password = await bcrypt.hash(payload.password, 10);
 		const id = v4();
-		await this.user.create({ ...payload, password, id });
+		try {
+			const newUser = await this.user.create({ role, username, password, id });
+			const { phone_number, first_name, last_name, sex, date_of_birth } = payload;
+			await this.userInfo.create({ user_id: newUser.id, phone_number, first_name, last_name, sex, date_of_birth });
+		} catch (error) {
+			this.user.deleteOne({ username: payload.phone_number });
+			throw error;
+		}
 		return true;
 	}
 

@@ -22,8 +22,7 @@ export default class AuthController {
 
 	public register = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
 		try {
-			const { username, password } = req.body;
-			const result = await this.authService.createUser({ username, password });
+			const result = await this.authService.createUser(req.body, 'parent', req.body.phone_number);
 			if (result) {
 				res.sendStatus(201);
 			} else {
