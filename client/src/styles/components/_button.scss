@@ -18,6 +18,9 @@
   align-items: center;
   justify-content: space-between;
   font-weight: 700;
+  &.danger {
+    background-color: var(--color-danger);
+  }
   &:active {
     transform: scale(0.99);
   }

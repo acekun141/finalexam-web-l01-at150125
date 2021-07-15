@@ -1,16 +1,22 @@
-import React, { useState } from "react";
-import { FormEvent, ChangeEvent } from "react";
-import { Input, Button, Select } from "../../components";
+import React, { useState, ChangeEvent } from "react";
 import moment from "moment/moment";
-import { registerService } from "../../../utils/auth";
-import { useMemo } from "react";
+import { FormEvent } from "react";
+import { useDispatch } from "react-redux";
 
-const RegisterAccount = () => {
+import { Button, Input, Select } from "../../components";
+import { createStudentService } from "../../../utils/student";
+import { useCallback } from "react";
+
+interface IProps {
+	successCallback?: any;
+}
+
+const RegisterStudent: React.FC<IProps> = (props) => {
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [dateOfBirth, setDateOfBirth] = useState<string>("");
-  const [phoneNumber, setPhoneNumber] = useState<string>("");
-	const [password, setPassword] = useState<string>("");
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const [sex, setSex] = useState<number>(1);
   const [error, setError] = useState<string>("");
 
@@ -23,39 +29,47 @@ const RegisterAccount = () => {
   const handleDOBChange = (event: ChangeEvent<HTMLInputElement>) => {
     setDateOfBirth(event.target.value);
   };
-  const handlePhoneNumberChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setPhoneNumber(event.target.value);
+  const handleUsernameChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setUsername(event.target.value);
   };
-	const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
-		setPassword(event.target.value);
-	};
+  const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value);
+  };
   const handleSexChange = (value: number) => {
     setSex(value);
   };
+	const clearForm = useCallback(() => {
+		setFirstName("");
+		setLastName("");
+		setDateOfBirth("");
+		setSex(1);
+		setUsername("");
+		setPassword("")
+	}, []);
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     const body = {
       first_name: firstName,
       last_name: lastName,
-      phone_number: phoneNumber,
+			username,
+			password,
       sex: sex,
-      date_of_birth: moment(dateOfBirth).format("YYYY-MM-DD"),
-			password: password
+      date_of_birth: moment(dateOfBirth).format("YYYY-MM-DD")
     }
-    const { error } =  await registerService(body);
+    const { error } = await createStudentService(body); 
     if (error) {
       return setError(error);
     }
-    window.location.replace("/login");
+		setError("");
+		if (typeof(props.successCallback) === "function") {
+			props.successCallback();
+		}
+		clearForm();
   };
 
-  const formValid = useMemo(() => {
-    return firstName && lastName && phoneNumber && sex && dateOfBirth && password;
-  }, [firstName, lastName, phoneNumber, sex, dateOfBirth, password]);
-
 	return (
-    <form onSubmit={handleSubmit}>
+    <form className="user-info" onSubmit={handleSubmit}>
       <div className="form-row">
         <div className="col">
           <Input
@@ -88,24 +102,22 @@ const RegisterAccount = () => {
         onChange={handleDOBChange}
       />
       <Input
-        value={phoneNumber}
-        name="phone_number"
-        label="Phone number"
+        value={username}
+        name="username"
+        label="Username"
         inputSize="lg"
         block={true}
-        onChange={handlePhoneNumberChange}
-        type="tel"
-        autoComplete="off"
+        onChange={handleUsernameChange}
+        type="text"
       />
       <Input
         value={password}
         name="password"
         label="Password"
         inputSize="lg"
-        onChange={handlePasswordChange}
         block={true}
+        onChange={handlePasswordChange}
         type="password"
-        autoComplete="off"
       />
       <Select
         value={sex}
@@ -119,15 +131,9 @@ const RegisterAccount = () => {
         outline={true}
       />
       {!!error && <p className="error-message">{error}</p>}
-      <Button
-        disabled={!formValid}
-        type="submit"
-        style={{ marginLeft: "auto" }}
-      >
-        Register
-      </Button>
+      <Button type="submit" style={{ marginLeft: "auto" }}>Submit</Button>
     </form>
   );
 }
 
-export default RegisterAccount;
+export default RegisterStudent;

@@ -38,3 +38,49 @@ button {
   font-size: 0.8rem;
   color: var(--color-danger);
 }
+
+.rdt_Pagination {
+  background-color: transparent !important;
+  border: 0 !important;
+}
+
+.rdt_Table {
+  background-color: transparent !important;
+  border: 0;
+  .rdt_TableHead {
+    background-color: transparent;
+    .rdt_TableHeadRow {
+      background-color: transparent;
+      border: 0;
+      .rdt_TableCol {
+        background-color: transparent;
+        font-size: 1rem;
+      }
+    }
+  }
+  .rdt_TableBody {
+    .rdt_TableRow {
+      border: 0;
+      margin-bottom: 10px;
+      border-radius: 16px;
+      padding: 15px 0;
+    }
+  }
+  .delete-button, .edit-button {
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    font-size: 1rem;
+    margin-left: 30px;
+  }
+  .delete-button {
+    svg {
+      fill: var(--color-danger);
+    }
+  }
+  .edit-button {
+    svg {
+      fill: var(--color-primary);
+    }
+  }
+}

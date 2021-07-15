@@ -13,13 +13,15 @@ import PaymentPage from "./pages/PaymentPage";
 import LoginForm from "./components/LoginForm";
 import { useLayoutEffect } from "react";
 import { getUserInfoAction } from "./redux/reducer/user/actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import RegisterPage from "./pages/RegisterPage";
+import ParentDashboard from "./pages/ParentDashboard";
 
 function App() {
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
+  const user = useSelector((state: any) => state.user);
 
   useLayoutEffect(() => {
     const accessToken = localStorage.getItem("access_token");
@@ -43,7 +45,8 @@ function App() {
         <Switch>
           <PublicRoute restricted={true} exact component={LoginForm} path="/login" />
           <PublicRoute restricted={true} exact component={RegisterPage} path="/register" />
-          <PrivateRoute exact component={AdminDashboard} path="/" />
+          {user.role === "admin" && <PrivateRoute exact component={AdminDashboard} path="/" />}
+          {user.role === "parent" && <PrivateRoute exact component={ParentDashboard} path="/" />}
           <PrivateRoute exact component={ListAccountPage} path="/account-list" />
           <PrivateRoute exact component={TeacherListPage} path="/teacher-list" />
           <PrivateRoute exact component={StudentListPage} path="/student-list" />

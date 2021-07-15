@@ -16,7 +16,21 @@
       width: 46px;
       border-radius: 50%;
     }
+    .user-short-name {
+      height: 46px;
+      width: 46px;
+      border-radius: 50%;
+      background-color: var(--color-primary);
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      display:flex;
+      align-items: center;
+      justify-content: center;
+      text-transform: uppercase;
+    }
     .detail {
+      text-align: left;
       display: flex;
       flex-direction: column;
       justify-content: center;

@@ -15,6 +15,15 @@ export default class LessonController {
 		}
 	};
 
+	public updateLesson = async (req: RequestWithUser, res: Response, next: NextFunction) => {
+		try {
+			await this.lessonService.updateLesson(req.body, req.user);
+			res.sendStatus(200);
+		} catch (error) {
+			next(error);
+		}
+	}
+
 	public deleteLesson = async (req: RequestWithUser, res: Response, next: NextFunction) => {
 		try {
 			const { lesson_id } = req.body;

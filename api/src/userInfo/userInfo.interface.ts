@@ -5,4 +5,5 @@ export interface IUserInfo {
 	avatar: string;
 	sex: string;
 	date_of_birth: string;
+	user_id: string | any;
 }

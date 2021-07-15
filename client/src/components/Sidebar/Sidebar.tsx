@@ -17,6 +17,7 @@ import { useSelector } from "react-redux";
 import { convertRole } from "../../container/constants";
 import SidebarRow from "./components/SidebarRow";
 import { IUserInfo } from "../../utils/user/userInterface";
+import { useMemo } from "react";
 
 const Sidebar = () => {
   const history = useHistory();
@@ -32,13 +33,24 @@ const Sidebar = () => {
     window.location.reload();
   }, []);
 
+  const userShortName = useMemo(() => {
+    if (user.first_name && user.last_name) {
+      return user.first_name[0] + user.last_name[0];
+    }
+    return "";
+  }, [user.first_name, user.last_name]);
+
   return (
     <div className="sidebar">
       <button className="sidebar__account">
+        {user.avatar ? 
         <img
           alt="avatar"
-          src="https://i.pinimg.com/originals/5d/16/97/5d1697f5aa5c3adcd8b0ba94d8f8d030.jpg"
+          src={user.avatar}
         />
+        : (
+          <div className="user-short-name">{userShortName}</div>
+        )}
         <div className="detail">
           <p className="name">{`${user.first_name} ${user.last_name}`}</p>
           <p className="role">{convertRole[user.role]}</p>

@@ -5,6 +5,7 @@ import UserInfoRouter from "./userInfo/userInfo.router";
 import TeacherRouter from "./teacher/teacher.router";
 import ClassRouter from "./class/class.router";
 import LessonRouter from "./lesson/lesson.router";
+import StudentRouter from "./student/student.router";
 
 const app = new App([
   new UserRouter(),
@@ -13,6 +14,7 @@ const app = new App([
   new TeacherRouter(),
   new ClassRouter(),
   new LessonRouter(),
+  new StudentRouter()
 ]);
 
 app.run();

@@ -5,3 +5,4 @@ export { PublicRoute } from "./PublicRoute";
 export { Checkbox } from "./Checkbox";
 export { Select } from "./Select";
 export { CardInfo } from "./CardInfo";
+export * from "./ConfirmModal";
