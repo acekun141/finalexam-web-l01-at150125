@@ -1,0 +1,12 @@
+.register-page {
+	display: flex;
+	height: 100vh;
+	&__left-side {
+		flex: 1;
+	}
+	&__right-side {
+		width: 400px;
+		padding: 30px;
+		background-color: white;
+	}
+}

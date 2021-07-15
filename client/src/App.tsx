@@ -15,6 +15,7 @@ import { useLayoutEffect } from "react";
 import { getUserInfoAction } from "./redux/reducer/user/actions";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -41,6 +42,7 @@ function App() {
       <Router>
         <Switch>
           <PublicRoute restricted={true} exact component={LoginForm} path="/login" />
+          <PublicRoute restricted={true} exact component={RegisterPage} path="/register" />
           <PrivateRoute exact component={AdminDashboard} path="/" />
           <PrivateRoute exact component={ListAccountPage} path="/account-list" />
           <PrivateRoute exact component={TeacherListPage} path="/teacher-list" />
