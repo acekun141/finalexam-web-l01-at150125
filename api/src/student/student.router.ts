@@ -4,7 +4,7 @@ import passport from "passport";
 import { Router } from "../_interface";
 import StudentController from "./student.controller";
 import { validateRole, validation } from "../_middleware";
-import { DeleteStudentDTO, GetListWithParentDTO, RegisterStudentDTO } from "./student.dto";
+import { DeleteStudentDTO, GetListWithParentDTO, RegisterStudentDTO, UpdateStudentDTO } from "./student.dto";
 
 
 export default class StudentRouter implements Router {
@@ -23,6 +23,13 @@ export default class StudentRouter implements Router {
 			validateRole(["parent"]),
 			validation(RegisterStudentDTO),
       this.controller.createStudent
+    );
+    this.router.post(
+      `${this.path}/update`,
+      passport.authenticate("jwt"),
+			validateRole(["parent", "admin"]),
+			validation(UpdateStudentDTO),
+      this.controller.updateStudent
     );
     this.router.post(
       `${this.path}/delete`,

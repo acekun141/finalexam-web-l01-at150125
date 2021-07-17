@@ -24,6 +24,16 @@ export default class StudentController {
 		}
 	};
 
+	public updateStudent = async (req: RequestWithUser, res: Response, next: NextFunction) => {
+		try {
+			const { student_id, parent_id } = req.body;
+			await this.service.updateStudent(student_id, parent_id, req.user, req.body);
+			res.sendStatus(200);
+		} catch (error) {
+			next(error);
+		}
+	}
+
 	public getChildrenWithParent = async (req: RequestWithUser, res: Response, next: NextFunction) => {
 		try {
 			const { parent_id } = req.body;

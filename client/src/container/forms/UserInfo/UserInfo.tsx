@@ -6,16 +6,25 @@ import { useDispatch } from "react-redux";
 import { updateUserInfoService } from "../../../utils/user/userService";
 import { getUserInfoAction } from "../../../redux/reducer/user/actions";
 import { Button, Input, Select } from "../../components";
+import { useEffect } from "react";
+import { useMemo } from "react";
 
-const UserInfo = () => {
+const UserInfo = ({ first_name="", last_name="", sex: sexProps=1, date_of_birth="", action }: any) => {
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [dateOfBirth, setDateOfBirth] = useState<string>("");
-  const [phoneNumber, setPhoneNumber] = useState<string>("");
-  const [sex, setSex] = useState<string>("male");
+  // const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const [sex, setSex] = useState<number>(1);
   const [error, setError] = useState<string>("");
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    setFirstName(first_name);
+    setLastName(last_name);
+    setDateOfBirth(moment(date_of_birth).format("YYYY-MM-DD"));
+    setSex(sexProps);
+  }, [first_name, last_name, sexProps, date_of_birth]);
 
   const handleFirstNameChange = (event: ChangeEvent<HTMLInputElement>) => {
     setFirstName(event.target.value);
@@ -26,10 +35,10 @@ const UserInfo = () => {
   const handleDOBChange = (event: ChangeEvent<HTMLInputElement>) => {
     setDateOfBirth(event.target.value);
   };
-  const handlePhoneNumberChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setPhoneNumber(event.target.value);
-  };
-  const handleSexChange = (value: string) => {
+  // const handlePhoneNumberChange = (event: ChangeEvent<HTMLInputElement>) => {
+  //   setPhoneNumber(event.target.value);
+  // };
+  const handleSexChange = (value: number) => {
     setSex(value);
   };
 
@@ -38,16 +47,22 @@ const UserInfo = () => {
     const body = {
       first_name: firstName,
       last_name: lastName,
-      phone_number: phoneNumber,
       sex: sex,
       date_of_birth: moment(dateOfBirth).format("YYYY-MM-DD")
     }
-    const { error } = await updateUserInfoService(body); 
-    if (error) {
-      return setError(error);
+    if (typeof(action) === "function") {
+      action(body);
     }
-    return dispatch(getUserInfoAction(() => {}));
+    // const { error } = await updateUserInfoService(body); 
+    // if (error) {
+    //   return setError(error);
+    // }
+    // return dispatch(getUserInfoAction(() => {}));
   };
+
+  const formValid = useMemo(() => {
+    return firstName && lastName && dateOfBirth && sex;
+  }, [firstName, lastName, dateOfBirth, sex])
 
 	return (
     <form className="user-info" onSubmit={handleSubmit}>
@@ -82,7 +97,7 @@ const UserInfo = () => {
         block={true}
         onChange={handleDOBChange}
       />
-      <Input
+      {/* <Input
         value={phoneNumber}
         name="phone_number"
         label="Phone number"
@@ -90,20 +105,20 @@ const UserInfo = () => {
         block={true}
         onChange={handlePhoneNumberChange}
         type="tel"
-      />
+      /> */}
       <Select
         value={sex}
         name="sex"
         option={[
-          { text: "Male", value: "male", checked: false },
-          { text: "Female", value: "female", checked: false },
+          { text: "Male", value: 1, checked: false },
+          { text: "Female", value: 0, checked: false },
         ]}
         label="Sex"
         onChange={handleSexChange}
         outline={true}
       />
       {!!error && <p className="error-message">{error}</p>}
-      <Button type="submit" style={{ marginLeft: "auto" }}>Submit</Button>
+      <Button disabled={!formValid} type="submit" style={{ marginLeft: "auto" }}>Submit</Button>
     </form>
   );
 }

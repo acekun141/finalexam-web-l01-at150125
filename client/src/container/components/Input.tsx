@@ -10,26 +10,37 @@ export interface InputProps extends React.ComponentPropsWithoutRef<"input"> {
 export const Input: React.FC<InputProps> = ({ label, color="", className="", block=false, inputSize="", ...rest }) => {
   const input = useRef<HTMLInputElement>(null);
 
+  // useEffect(() => {
+  //   const inputTarget = input.current;
+  //   const handleInputChange = () => {
+  //     if (inputTarget) {
+  //       if (inputTarget.value) {
+  //         inputTarget.classList.add("active");
+  //       } else {
+  //         inputTarget.classList.remove("active");
+  //       }
+  //     }
+  //   }
+  //   if (inputTarget) {
+  //     inputTarget.addEventListener("input", handleInputChange)
+  //   }
+  //   return () => {
+  //     if (inputTarget) {
+  //       inputTarget.removeEventListener("input", handleInputChange);
+  //     }
+  //   }
+  // }, []);
+
   useEffect(() => {
     const inputTarget = input.current;
-    const handleInputChange = () => {
-      if (inputTarget) {
-        if (inputTarget.value) {
+    if (inputTarget) {
+        if (rest.value) {
           inputTarget.classList.add("active");
         } else {
           inputTarget.classList.remove("active");
         }
-      }
     }
-    if (inputTarget) {
-      inputTarget.addEventListener("input", handleInputChange)
-    }
-    return () => {
-      if (inputTarget) {
-        inputTarget.removeEventListener("input", handleInputChange);
-      }
-    }
-  }, []);
+  }, [rest.value]);
 
   return (
     <div className={`custom-input ${inputSize} ${block ? "block" : ""}`}>

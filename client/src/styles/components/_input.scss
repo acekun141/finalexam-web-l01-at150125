@@ -49,6 +49,7 @@
     position: absolute;
     transition: 0.1s ease-out;
     color: var(--color-gray);
+    pointer-events: none;
   }
 }
 

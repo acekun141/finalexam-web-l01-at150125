@@ -13,6 +13,18 @@ export const getListChildrenService = async (parentId: string): Promise<IService
 	}
 }
 
+export const updateStudentService = async (parentId: string, studentId: string, data: any): Promise<IServiceResult<any>> => {
+	try {
+		await API.post("/student/update", { parent_id: parentId, student_id: studentId,...data });
+		return {
+			error: null,
+			data: null
+		};
+	} catch (error) {
+		return handleError(error);
+	}
+}
+
 export const createStudentService = async (student: any): Promise<IServiceResult<any>> => {
 	try {
 		await API.post("/student/create", { ...student });

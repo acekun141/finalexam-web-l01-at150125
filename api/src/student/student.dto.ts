@@ -11,6 +11,16 @@ export const RegisterStudentDTO = joi.object().keys({
 	// role: joi.string().valid('student', 'admin', 'teacher', 'parent').required()
 });
 
+export const UpdateStudentDTO = joi.object().keys({
+	student_id: joi.string().required(),
+	parent_id: joi.string().required(),
+	first_name: joi.string().required(),
+	last_name: joi.string().required(),
+	// phone_number: joi.string().required(),
+	date_of_birth: joi.string().required(),
+	sex: joi.number().valid(1, 0).required()
+});
+
 export const DeleteStudentDTO = joi.object().keys({
 	student_id: joi.string().required(),
 });
