@@ -25,15 +25,35 @@ export default class ClassService {
 		return true;
 	}
 
+	public getList = async () => {
+		try {
+			const listClass = await this.classModel.find().populate('teacher');
+			const listClassWithTeacherDetail = await Promise.all(
+				listClass.map(async (item: any) => {
+					if (!item.teacher) {
+						const { teacher_id, ...result } = item._doc;
+						return { ...result, teacher: null };
+					}
+					const teacher = await this.userInfoModel.findOne({ user_id: item.teacher.id });
+					return { ...item._doc, teacher };
+				})
+			)
+			return listClassWithTeacherDetail;
+		} catch (error) {
+			throw error;
+		}
+	}
+
 	public getInfo = async (classId: string) => {
     const classWithId = await this.classModel
       .findOne({ id: classId })
+			.populate("teacher")
       .populate("students", "id");
     if (!classWithId) {
       throw new HttpException(400, `Class does not existed!`);
     }
-    const { name, open, close, date, teacher_id, id, students } = classWithId;
-    const teacher = await this.userInfoModel.findOne({ user_id: teacher_id });
+    const { name, open, close, date, id, students } = classWithId;
+		const teacher: any = classWithId.teacher;
     const studentDetails = await Promise.all(
       students.map(async (item: any) => {
         const userDetail = await this.userInfoModel.findOne({
@@ -54,13 +74,7 @@ export default class ClassService {
       open,
       close,
       date,
-      teacher: teacher
-        ? {
-            first_name: teacher.first_name,
-            last_name: teacher.last_name,
-            id: teacher.id,
-          }
-        : "",
+      teacher: teacher ? await this.userInfoModel.findOne({ user_id: teacher.id }) : null,
       id,
       students: studentDetails,
     };
@@ -118,7 +132,7 @@ export default class ClassService {
 
 	public updateTeacher = async (classId: string, teacherId: string) => {
 		const classWithId = await this.classModel.findOne({ id: classId });
-		const userWithId = await this.userModel.findOne({ id: teacherId });
+		const userWithId = await this.userModel.findOne({ _id: teacherId });
 		if (!classWithId) {
 			throw new HttpException(400, 'Class does not existed!');
 		}
@@ -129,7 +143,7 @@ export default class ClassService {
 			throw new HttpException(400, 'User is not teacher');
 		}
 		try {
-			classWithId.teacher_id = userWithId.id;
+			classWithId.teacher = userWithId._id;
 			await classWithId.save()
 		} catch (error) {
 			throw error;

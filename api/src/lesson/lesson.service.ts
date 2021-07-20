@@ -38,10 +38,10 @@ export default class LessonService {
     if (!lesson) {
       throw new HttpException(400, "Lesson does not existed");
     }
-    const classWithLesson = await this.classModel.findOne({
+    const classWithLesson: any = await this.classModel.findOne({
       id: lesson.class_id,
-    });
-    if (classWithLesson.teacher_id !== user.id && user.role === "teacher") {
+    }).populate("teacher");
+    if ((classWithLesson.teacher || {}).id !== user.id && user.role === "teacher") {
       throw new HttpException(400, "You cannot update this lesson");
     }
     try {
@@ -60,10 +60,10 @@ export default class LessonService {
     if (!lesson) {
       throw new HttpException(400, "Lesson does not existed");
     }
-    const classWithLesson = await this.classModel.findOne({
+    const classWithLesson: any = await this.classModel.findOne({
       id: lesson.class_id,
-    });
-    if (classWithLesson.teacher_id !== user.id && user.role === "teacher") {
+    }).populate("teacher");
+    if ((classWithLesson.teacher || {}).id !== user.id && user.role === "teacher") {
       throw new HttpException(400, "You cannot delete this lesson");
     }
     try {

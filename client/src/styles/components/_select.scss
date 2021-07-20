@@ -2,8 +2,10 @@
   display: flex;
   flex-direction: column-reverse;
   position: relative;
+  &--lg {
+  }
   &.outline {
-    margin: 15px 0;
+	margin-bottom: 15px;
     select {
       padding: 14px 16px;
       background-color: transparent;

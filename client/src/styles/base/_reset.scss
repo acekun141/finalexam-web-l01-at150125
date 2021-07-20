@@ -47,6 +47,9 @@ button {
 .rdt_Table {
   background-color: transparent !important;
   border: 0;
+  .bHRuLM {
+    border-radius: 16px;
+  }
   .rdt_TableHead {
     background-color: transparent;
     .rdt_TableHeadRow {
@@ -81,6 +84,50 @@ button {
   .edit-button {
     svg {
       fill: var(--color-primary);
+    }
+  }
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  &__avatar {
+    height: 50px;
+    width: 50px;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  p {
+    font-weight: bold;
+    margin-left: 16px;
+  }
+}
+
+.section {
+  &__header {
+    display: flex;
+    align-items: center;
+    button {
+      background-color: var(--color-primary);
+      height: 35px;
+      width: 35px;
+      border: 0;
+      outline: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      border-radius: 16px;
+      margin-left: 1rem;
+      svg {
+        fill: white;
+      }
     }
   }
 }

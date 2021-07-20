@@ -20,12 +20,16 @@ export default class ClassRouter implements Router {
 	private initializeController(): void {
 		this.router.post(
       `${this.path}/create`,
-			// TODO: add authen
-      // passport.authenticate("jwt"),
-      // validateRole(["admin"]),
+      passport.authenticate("jwt"),
+      validateRole(["admin"]),
       validation(CreateClassDTO),
 			this.controller.create
     );
+		this.router.get(
+			this.path,
+			passport.authenticate("jwt"),
+			this.controller.getList
+		),
 		this.router.post(
 			`${this.path}/class_info`,
 			// TODO: add authen

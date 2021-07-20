@@ -8,7 +8,7 @@ const classSchema = new mongoose.Schema({
 	open: { type: Number, required: true },
 	close: { type: Number, required: true },
 	date: { type: Number, required: true, enum: [0, 1, 2, 3, 4, 5, 6]},
-	teacher_id: { type: String, default: "" },
+	teacher: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
 	students: [ { type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 });
 

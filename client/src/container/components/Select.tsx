@@ -8,9 +8,10 @@ interface IProps extends React.ComponentPropsWithoutRef<"input"> {
   onChange: (value: any) => any;
   hidden?: boolean;
   outline?: boolean;
+	size?: "lg";
 }
 
-export const Select: React.FC<IProps> = ({ label, option, value, hidden, onChange, outline=false, ...rest }) => {
+export const Select: React.FC<IProps> = ({ label, option, value, hidden, onChange, size, outline=false, ...rest }) => {
 
   const handleSelectChange = (event: FormEvent<HTMLSelectElement>) => {
     onChange(event.currentTarget.value);
@@ -19,8 +20,8 @@ export const Select: React.FC<IProps> = ({ label, option, value, hidden, onChang
   if (hidden) return null;
 
   return (
-    <div className={`custom-select ${outline ? "outline" : ""}`}>
-      <select value={value} id={label} onChange={handleSelectChange}>
+    <div className={`custom-select ${outline ? "outline" : ""} ${size ? `custom-select--${size}` : "" }`}>
+      <select {...rest} value={value} id={label} onChange={handleSelectChange}>
         {option.map(item => (
           <option key={item.value} value={item.value}>{item.text}</option>
         ))}

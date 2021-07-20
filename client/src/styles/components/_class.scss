@@ -10,6 +10,14 @@
     height: 64px;
     overflow: hidden;
     border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-primary);
+    p {
+      font-weight: bold;
+      color: white;
+    }
     img {
       height: 100%;
       width: auto;

@@ -1,43 +1,36 @@
 import React, { useState, useEffect  } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import DataTable from "react-data-table-component";
 import { BiUserPlus } from "react-icons/bi";
 
 
-import { deleteStudentService, getListChildrenService, updateStudentService } from "../../utils/student";
+import { deleteStudentService, updateStudentService } from "../../utils/student";
 import { STUDENT_TABLE } from "../../container/tables";
-import UserInfo from "../../container/forms/UserInfo";
 import Modal from "../../container/components/Modal";
 import { useCallback } from "react";
 import RegisterStudent from "../../container/forms/RegisterStudent";
 import UserInfoForm from "../../container/forms/UserInfo";
 import ConfirmModal from "../../container/components/ConfirmModal";
-import { stringify } from "querystring";
-import { updateUserInfoService } from "../../utils/user/userService";
+import { getListStudentAction } from "../../redux/reducer/listStudent/actions";
 
 const ListChildren = () => {
 	const [loading, setLoading] = useState<boolean>(true);
-	const [listChilren, setListChildren] = useState<any[]>([]);
 	const [error, setError] = useState<string>("");
 	const [isAddStudent, setIsAddStudent] = useState<boolean>(false);
 	const [isShowDelete, setIsShowDelete] = useState<boolean>(false);
 	const [isShowUserInfo, setIsShowUserInfo] = useState<boolean>(false);
 	const [selectedStudent, setSelectedStudent] = useState<any>({});
 
+	const dispatch = useDispatch();
 	const user = useSelector((state: any) => state.user);
+	const listChilren = useSelector((state: any) => state.listStudent);
 
 	useEffect(() => {
 		handleGetListChildren(user.id);
 	}, [user.id]);
 
 	const handleGetListChildren = async (id: string) => {
-		const { data, error } = await getListChildrenService(id);
-		if (error) {
-			setLoading(false);
-			return setError(error);
-		}
-		setLoading(false);
-		return setListChildren(data);
+		dispatch(getListStudentAction(id, () => setLoading(false)));
 	};
 
 	const openAddStudentModal = useCallback(() => {

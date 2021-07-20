@@ -10,6 +10,7 @@ export default class UserService {
 		const userInfo = await this.userInfoModel.findOne({ user_id: id });
 		if (userInfo) {
 			return {
+				_id: user._id,
 				id: user.id,
 				username: user.username,
 				role: user.role,
@@ -21,6 +22,7 @@ export default class UserService {
 			};
 		}
 		return {
+			_id: user._id,
 			id: user.id,
 			username: user.username,
 			role: user.role,

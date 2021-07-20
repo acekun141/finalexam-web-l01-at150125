@@ -11,19 +11,20 @@ import StudentListPage from "./pages/StudentListPage";
 import MessagePage from "./pages/MessagePage";
 import PaymentPage from "./pages/PaymentPage";
 import LoginForm from "./components/LoginForm";
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 import { getUserInfoAction } from "./redux/reducer/user/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import RegisterPage from "./pages/RegisterPage";
 import ParentDashboard from "./pages/ParentDashboard";
+import ClassDetail from "./pages/ClassDetail";
 
 function App() {
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
   const user = useSelector((state: any) => state.user);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const accessToken = localStorage.getItem("access_token");
     if (accessToken) {
       getUserInfo();
@@ -37,6 +38,8 @@ function App() {
     dispatch(getUserInfoAction(() => setLoading(false)));
   }
 
+	console.log(loading);
+
   if (loading) return null;
 
   return (
@@ -47,6 +50,7 @@ function App() {
           <PublicRoute restricted={true} exact component={RegisterPage} path="/register" />
           {user.role === "admin" && <PrivateRoute exact component={AdminDashboard} path="/" />}
           {user.role === "parent" && <PrivateRoute exact component={ParentDashboard} path="/" />}
+          <PrivateRoute exact component={ClassDetail} path="/class/:class_id" />
           <PrivateRoute exact component={ListAccountPage} path="/account-list" />
           <PrivateRoute exact component={TeacherListPage} path="/teacher-list" />
           <PrivateRoute exact component={StudentListPage} path="/student-list" />

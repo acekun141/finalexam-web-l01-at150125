@@ -25,9 +25,11 @@ export const STUDENT_TABLE = (onEdit: any, onDelete: any) => [
 		name: "",
 		cell: (row: any) => (
 			<div>
-				<button className="edit-button" onClick={() => onEdit(row)}>
-					<BiEdit size="1.1rem" />
-				</button>
+				{onEdit && 
+					<button className="edit-button" onClick={() => onEdit(row)}>
+						<BiEdit size="1.1rem" />
+					</button>
+				}
 				<button className="delete-button" onClick={() => onDelete(row)}>
 					<BiTrash size="1.1rem" />
 				</button>

@@ -17,6 +17,15 @@ export default class ClassController {
 		}
 	}
 
+	public getList = async (req: Request, res: Response, next: NextFunction) => {
+		try {
+			const list = await this.classService.getList();
+			res.status(200).json({ list });
+		} catch (error) {
+			next(error);
+		}
+	}
+
 	public getInfo = async (req: Request, res: Response, next: NextFunction) => {
 		try {
 			const { class_id } = req.body;

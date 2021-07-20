@@ -4,7 +4,7 @@ export interface IClass {
 	open: Number;
 	close: Number;
 	date: Number;
-	teacher_id: String;
+	teacher: String;
 	type: "A" | "B" | "C" | "D";
 	students: String[];
 }

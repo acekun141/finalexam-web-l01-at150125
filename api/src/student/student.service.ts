@@ -42,7 +42,7 @@ export default class StudentService {
         sex,
         date_of_birth,
       });
-      const relationship = this.relationshipModel.findOne({
+      const relationship = await this.relationshipModel.findOne({
         parent_id: user.id,
       });
       if (!relationship) {
@@ -109,13 +109,16 @@ export default class StudentService {
       const relationship = await this.relationshipModel
         .findOne({ parent_id })
         .populate("children", "id");
-      console.log(relationship);
+			if (!relationship) {
+				return [];
+			}
       const listChildren = await Promise.all(
         relationship.children.map(async (item: any) => {
           const childrenInfo = await this.userInfoModel.findOne({
             user_id: item.id,
           });
           return {
+            _id: item._id,
             first_name: childrenInfo.first_name,
             last_name: childrenInfo.last_name,
             id: childrenInfo.user_id,
